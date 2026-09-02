@@ -1,285 +1,173 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA Tecnologia | Portfólio de Soluções Web</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I.A Tecnologia | Desenvolvimento de Software</title>
+<meta name="description" content="Sistemas web, automação, gestão, dashboards e soluções sob medida para empresas.">
+<style>
+:root{
+  --bg:#050b14; --bg2:#081426; --panel:#0d1a2d; --line:rgba(255,255,255,.09);
+  --text:#f5f8ff; --muted:#a6b2c6; --blue:#117cff; --cyan:#00b8ff; --green:#2dd48a;
+  --gold:#f3b31b; --shadow:0 24px 70px rgba(0,0,0,.35); --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
+background:radial-gradient(circle at 78% 0,rgba(17,124,255,.18),transparent 28%),
+linear-gradient(180deg,#040a12 0,#07111f 42%,#081321 100%);}
+a{text-decoration:none;color:inherit}.container{width:min(1200px,92%);margin:auto}
+header{position:sticky;top:0;z-index:30;background:rgba(4,10,18,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:13px}.brand img{width:54px;height:54px;object-fit:cover;border-radius:15px}
+.brand strong{display:block;font-size:1.02rem}.brand span{display:block;color:var(--muted);font-size:.77rem}
+nav{display:flex;gap:24px;align-items:center;font-size:.94rem;color:#dce7f7}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:14px;
+background:linear-gradient(135deg,var(--blue),var(--cyan));font-weight:800;box-shadow:0 12px 30px rgba(17,124,255,.24)}
+.btn.alt{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);box-shadow:none}
+.hero{padding:90px 0 62px;display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+.badge{display:inline-flex;padding:8px 13px;border-radius:999px;background:rgba(17,124,255,.1);border:1px solid rgba(17,124,255,.28);color:#7fc0ff;font-size:.84rem;font-weight:800}
+h1{font-size:clamp(2.7rem,5.4vw,5.4rem);line-height:1.02;letter-spacing:-.045em;margin:20px 0}
+.accent{background:linear-gradient(90deg,#6cbcff,#0bb6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.13rem;line-height:1.75;color:#bec9db;max-width:760px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-panel{background:linear-gradient(180deg,rgba(14,30,54,.95),rgba(7,18,34,.96));border:1px solid var(--line);border-radius:30px;padding:20px;box-shadow:var(--shadow)}
+.hero-panel img{width:100%;display:block;border-radius:22px}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.trust div{padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.035)}
+.trust b{display:block;font-size:1rem}.trust span{display:block;color:var(--muted);font-size:.76rem;margin-top:3px}
+section{padding:74px 0}.kicker{color:#66b4ff;font-weight:800;font-size:.82rem;text-transform:uppercase;letter-spacing:.14em}
+h2{font-size:clamp(2rem,4vw,3.3rem);letter-spacing:-.035em;margin:10px 0 12px}
+.sub{color:var(--muted);line-height:1.72;max-width:780px}
+.maturity{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+.maturity .box{padding:28px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(15,31,54,.9),rgba(8,21,39,.88))}
+.maturity h3{margin:0 0 10px}.maturity p{margin:0;color:var(--muted);line-height:1.7}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px}
+.metric{padding:20px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}
+.metric b{font-size:1.5rem;color:#fff;display:block}.metric span{font-size:.8rem;color:var(--muted)}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+.project{overflow:hidden;border-radius:24px;border:1px solid var(--line);background:#0b1729;box-shadow:0 14px 45px rgba(0,0,0,.18)}
+.project img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#fff}
+.project .body{padding:22px}.project h3{font-size:1.15rem;margin:0 0 8px}.project p{margin:0;color:var(--muted);line-height:1.65;font-size:.93rem}
+.project .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.tag{font-size:.72rem;padding:7px 9px;border-radius:999px;background:rgba(17,124,255,.1);color:#8ac7ff;border:1px solid rgba(17,124,255,.2)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.service{padding:25px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(14,29,52,.92),rgba(8,20,37,.9))}
+.service .ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:rgba(17,124,255,.12);color:#83c5ff;font-weight:900}
+.service h3{margin:16px 0 9px}.service p{margin:0;color:var(--muted);line-height:1.65}
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}.step{padding:22px;border-top:2px solid var(--blue);background:rgba(255,255,255,.025);border-radius:0 0 18px 18px}.step b{color:#66b4ff}.step h3{margin:9px 0}.step p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.6}
+.cta{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:36px;border-radius:28px;background:linear-gradient(135deg,rgba(17,124,255,.15),rgba(0,184,255,.07));border:1px solid rgba(17,124,255,.3)}
+.cta p{color:var(--muted);line-height:1.7}.cta-actions{display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:#91a0b7;font-size:.87rem}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media(max-width:930px){nav a:not(.btn){display:none}.hero{grid-template-columns:1fr}.gallery,.maturity{grid-template-columns:1fr}.services{grid-template-columns:1fr 1fr}.metrics,.process{grid-template-columns:1fr 1fr}.cta{grid-template-columns:1fr}.cta-actions{justify-content:flex-start}}
+@media(max-width:620px){.services,.metrics,.process,.trust{grid-template-columns:1fr}.brand span{display:none}.hero{padding-top:52px}.project img{aspect-ratio:16/10}}
+</style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between">
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio">
+      <img src="assets/logo.jpg" alt="I.A Tecnologia">
+      <div><strong>I.A Tecnologia</strong><span>Desenvolvimento de Software LTDA.</span></div>
+    </a>
+    <nav>
+      <a href="#empresa">Empresa</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato" class="btn">Falar sobre um projeto</a>
+    </nav>
+  </div>
+</header>
 
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-xl text-white shadow-lg shadow-blue-500/30">
-                    IA
-                </div>
-                <div>
-                    <span class="text-xl font-bold tracking-wider text-white block leading-none">IA TECNOLOGIA</span>
-                    <span class="text-xs text-blue-400 font-medium tracking-widest">INOVAÇÃO • INTELIGÊNCIA • SOLUÇÕES</span>
-                </div>
-            </div>
-            <a href="#sistemas" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-5 py-2.5 rounded-lg transition duration-200 shadow-md shadow-blue-600/20 text-sm">
-                Ver Sistemas
-            </a>
-        </div>
-    </header>
+<main>
+<section id="inicio">
+  <div class="container hero">
+    <div>
+      <div class="badge">Soluções digitais para operações reais</div>
+      <h1>Software com <span class="accent">visão de negócio</span> e execução técnica.</h1>
+      <p class="lead">Desenvolvemos sistemas web personalizados para empresas que precisam organizar processos, automatizar rotinas, centralizar dados e acompanhar resultados com mais clareza.</p>
+      <div class="actions">
+        <a class="btn" href="#projetos">Conhecer projetos</a>
+        <a class="btn alt" href="#empresa">Sobre a empresa</a>
+      </div>
+      <div class="trust">
+        <div><b>Web</b><span>Sistemas acessíveis por navegador</span></div>
+        <div><b>VPS</b><span>Ambientes hospedados e estáveis</span></div>
+        <div><b>Dados</b><span>Dashboards e relatórios gerenciais</span></div>
+        <div><b>Escala</b><span>Projetos preparados para evoluir</span></div>
+      </div>
+    </div>
+    <div class="hero-panel"><img src="assets/logo.jpg" alt="Logo I.A Tecnologia"></div>
+  </div>
+</section>
 
-    <section class="gradient-bg py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
-        <div class="max-w-5xl mx-auto text-center space-y-6">
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight">
-                Desenvolvimento de Software <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">LTDA</span>
-            </h1>
-            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-light leading-relaxed">
-                Desenvolvemos sistemas web modernos, seguros e escaláveis para empresas que buscam eficiência, organização e crescimento.
-            </p>
-            
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 pt-8 text-xs font-semibold text-slate-300">
-                <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-globe text-blue-400 text-lg"></i>
-                    Sistemas 100% Web
-                </div>
-                <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-bolt text-blue-400 text-lg"></i>
-                    Alta Performance
-                </div>
-                <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-shield-halved text-blue-400 text-lg"></i>
-                    Segurança de Dados
-                </div>
-                <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-headset text-blue-400 text-lg"></i>
-                    Suporte Especializado
-                </div>
-                <div class="col-span-2 md:col-span-1 p-3 bg-slate-900/60 rounded-xl border border-slate-800 flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-sliders text-blue-400 text-lg"></i>
-                    Soluções Sob Medida
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="empresa">
+  <div class="container">
+    <div class="kicker">I.A Tecnologia</div>
+    <h2>Uma presença que transmite solidez, método e continuidade.</h2>
+    <p class="sub">Nossa atuação combina entendimento de operação, desenvolvimento sob medida e melhoria contínua. Em vez de entregar apenas telas, estruturamos soluções pensadas para o dia a dia de cada empresa, com foco em segurança, organização, desempenho e evolução do sistema ao longo do tempo.</p>
 
-    <main id="sistemas" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow w-full">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-white">Nossos Sistemas Web</h2>
-            <p class="text-slate-400 mt-2">Soluções completas e em funcionamento para diferentes segmentos</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="bg-slate-900 border border-blue-500/50 rounded-2xl overflow-hidden card-hover flex flex-col justify-between relative group">
-                <div class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                    Destaque
-                </div>
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-solid fa-chart-line"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-2">DSF Ecommerce</h3>
-                    <p class="text-slate-400 text-sm mb-4">
-                        Sistema completo de vendas, estoque e financeiro com dashboards avançados e relatórios em tempo real.
-                    </p>
-                    <ul class="text-xs text-slate-300 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Gestão de Vendas & Pedidos</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Controle de Estoque Intuitivo</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Relatórios Financeiros e Ticket Médio</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-blue-400"></i> Múltiplas Formas de Pagamento</li>
-                    </ul>
-                </div>
-                <div class="p-6 pt-0">
-                    <button onclick="openModal()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2.5 rounded-lg transition text-sm flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-circle-info"></i> Ver Detalhes do Painel
-                    </button>
-                </div>
-            </div>
-
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-solid fa-couch"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Virtude Móveis Gestão</h3>
-                    <p class="text-slate-400 text-sm mb-4">
-                        Gestão completa de obras, orçamentos, contratos e projetos para marcenarias e móveis planejados.
-                    </p>
-                    <ul class="text-xs text-slate-300 space-y-2">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Gestão de obras e orçamentos</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Contratos e assinaturas</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Controle de produção</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Acompanhamento de etapas e entregas</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">VirtudeCRM</h3>
-                    <p class="text-slate-400 text-sm mb-4">
-                        CRM integrado ao WhatsApp para centralizar atendimentos, gerenciar oportunidades e aumentar vendas.
-                    </p>
-                    <ul class="text-xs text-slate-300 space-y-2">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Integração com WhatsApp</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Funil de vendas completo</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Histórico unificado de conversas</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Relatórios detalhados de atendimentos</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-solid fa-id-card-clip"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">SeguroEPI+</h3>
-                    <p class="text-slate-400 text-sm mb-4">
-                        Controle de entrega de EPIs com biometria facial, validação técnica de CA e relatórios de segurança.
-                    </p>
-                    <ul class="text-xs text-slate-300 space-y-2">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Reconhecimento facial na entrega</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Controle de validade do CA</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Registro de entregas e devoluções</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400"></i> Exportação de relatórios em PDF</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
-                <div class="p-6">
-                    <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-xl flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-regular fa-calendar-check"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Reserva24hs</h3>
-                    <p class="text-slate-400 text-sm mb-4">
-                        Sistema de agendamentos online 24h para barbearias, salões de beleza e diversos segmentos de serviços.
-                    </p>
-                    <ul class="text-xs text-slate-300 space-y-2">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Agendamentos online automatizados</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Gestão de profissionais e serviços</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Controle de horários e disponibilidade</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400"></i> Painel financeiro e múltiplos layouts</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="bg-gradient-to-br from-blue-900/40 to-slate-900 border border-blue-500/30 rounded-2xl p-6 flex flex-col justify-between text-left">
-                <div>
-                    <div class="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center text-2xl mb-4">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Sistemas Sob Medida</h3>
-                    <p class="text-slate-300 text-sm mb-4">
-                        Sua empresa merece uma solução única. Desenvolvemos softwares sob medida para atender exatamente aos processos do seu negócio.
-                    </p>
-                </div>
-                <div class="mt-4 pt-4 border-t border-slate-800/80">
-                    <span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider block">Soluções Personalizadas</span>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <div id="dsfModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 space-y-6">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                <div>
-                    <h3 class="text-2xl font-bold text-white">DSF Ecommerce — Métrica do Dashboard</h3>
-                    <p class="text-xs text-slate-400">Visão geral do painel administrativo de gestão</p>
-                </div>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-white text-xl p-2">&times;</button>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-                <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
-                    <span class="text-xs text-slate-400 block">Vendas Totais</span>
-                    <span class="text-lg font-bold text-emerald-400">R$ 56.780,45</span>
-                </div>
-                <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
-                    <span class="text-xs text-slate-400 block">Pedidos</span>
-                    <span class="text-lg font-bold text-white">128</span>
-                </div>
-                <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
-                    <span class="text-xs text-slate-400 block">Clientes Ativos</span>
-                    <span class="text-lg font-bold text-white">87</span>
-                </div>
-                <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
-                    <span class="text-xs text-slate-400 block">Ticket Médio</span>
-                    <span class="text-lg font-bold text-blue-400">R$ 443,60</span>
-                </div>
-            </div>
-
-            <div class="space-y-3">
-                <h4 class="text-sm font-semibold text-slate-200">Formas de Pagamento Utilizadas</h4>
-                <div class="space-y-2 text-xs">
-                    <div>
-                        <div class="flex justify-between text-slate-300 mb-1">
-                            <span>PIX</span>
-                            <span>45,0% (R$ 25.591,20)</span>
-                        </div>
-                        <div class="w-full bg-slate-800 rounded-full h-2">
-                            <div class="bg-blue-500 h-2 rounded-full" style="width: 45%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-slate-300 mb-1">
-                            <span>Dinheiro</span>
-                            <span>27,0% (R$ 15.320,40)</span>
-                        </div>
-                        <div class="w-full bg-slate-800 rounded-full h-2">
-                            <div class="bg-emerald-500 h-2 rounded-full" style="width: 27%"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-slate-300 mb-1">
-                            <span>Cartão de Crédito</span>
-                            <span>18,0% (R$ 10.220,10)</span>
-                        </div>
-                        <div class="w-full bg-slate-800 rounded-full h-2">
-                            <div class="bg-purple-500 h-2 rounded-full" style="width: 18%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-right border-t border-slate-800 pt-4">
-                <button onclick="closeModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-4 py-2 rounded-lg text-sm transition">
-                    Fechar
-                </button>
-            </div>
-        </div>
+    <div class="maturity">
+      <div class="box"><h3>Experiência aplicada em diferentes segmentos</h3><p>Projetos para móveis planejados, estoque, vendas, atendimento, segurança do trabalho e agendamentos demonstram capacidade de adaptação a regras de negócio distintas.</p></div>
+      <div class="box"><h3>Relacionamento de longo prazo com o sistema</h3><p>As soluções são pensadas para receber novos módulos, relatórios, permissões, integrações e melhorias conforme a operação amadurece.</p></div>
     </div>
 
-    <footer class="border-t border-slate-800 bg-slate-900 py-8 text-center text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4 space-y-2">
-            <p>© IA Tecnologia e Desenvolvimento de Software LTDA. Todos os direitos reservados.</p>
-            <p class="text-slate-600">Sistemas web de alta performance, modernos e escaláveis.</p>
-        </div>
-    </footer>
+    <div class="metrics">
+      <div class="metric"><b>5+</b><span>Sistemas completos apresentados</span></div>
+      <div class="metric"><b>100%</b><span>Foco em soluções web</span></div>
+      <div class="metric"><b>Multiárea</b><span>Gestão, vendas, estoque e serviços</span></div>
+      <div class="metric"><b>Contínuo</b><span>Evolução e suporte dos projetos</span></div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        function openModal() {
-            document.getElementById('dsfModal').classList.remove('hidden');
-        }
-        function closeModal() {
-            document.getElementById('dsfModal').classList.add('hidden');
-        }
-    </script>
+<section id="projetos">
+  <div class="container">
+    <div class="kicker">Portfólio de sistemas</div>
+    <h2>Dashboards e aplicações desenvolvidas.</h2>
+    <p class="sub">Alguns dos sistemas criados para diferentes necessidades de gestão e operação.</p>
+
+    <div class="gallery">
+      <article class="project"><img src="assets/dsf-ecommerce.jpg" alt="Dashboard DSF Ecommerce"><div class="body"><h3>DSF Ecommerce</h3><p>Gestão de vendas, pedidos, produtos, clientes, estoque e fechamento, com indicadores e análise de desempenho comercial.</p><div class="tags"><span class="tag">Vendas</span><span class="tag">Estoque</span><span class="tag">Dashboard</span><span class="tag">Financeiro</span></div></div></article>
+      <article class="project"><img src="assets/straumad-estoque.jpg" alt="Dashboard StraumadEstoque"><div class="body"><h3>StraumadEstoque</h3><p>Controle de múltiplos locais de estoque, entradas, saídas, reservas, estoque baixo, movimentações e rankings de produtos.</p><div class="tags"><span class="tag">Estoque</span><span class="tag">Movimentações</span><span class="tag">Indicadores</span></div></div></article>
+      <article class="project"><img src="assets/seguroepi.jpg" alt="Dashboard SeguroEPI+"><div class="body"><h3>SeguroEPI+</h3><p>Controle de funcionários, EPIs, entregas, Certificados de Aprovação, histórico, empresas, usuários e relatórios operacionais.</p><div class="tags"><span class="tag">EPI</span><span class="tag">CA</span><span class="tag">Relatórios</span><span class="tag">Segurança</span></div></div></article>
+      <article class="project"><img src="assets/reserva24hs.jpg" alt="Dashboard Reserva24hs"><div class="body"><h3>Reserva24hs</h3><p>Agenda, clientes, profissionais, serviços, financeiro e relatórios para operações que trabalham com reservas e horários.</p><div class="tags"><span class="tag">Agendamento</span><span class="tag">SaaS</span><span class="tag">Financeiro</span></div></div></article>
+      <article class="project"><img src="assets/virtude-gestao.jpg" alt="Dashboard Virtude Móveis Gestão"><div class="body"><h3>Virtude Móveis Gestão</h3><p>Gestão de orçamentos, obras, clientes, valores, projetos, CRM, atendimento e acompanhamento de execução.</p><div class="tags"><span class="tag">Obras</span><span class="tag">Orçamentos</span><span class="tag">CRM</span><span class="tag">Contratos</span></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="container">
+    <div class="kicker">O que desenvolvemos</div>
+    <h2>Soluções sob medida para empresas.</h2>
+    <div class="services">
+      <div class="service"><div class="ico">01</div><h3>Sistemas de Gestão</h3><p>Painéis administrativos, cadastros, permissões, históricos, indicadores, relatórios e regras de negócio.</p></div>
+      <div class="service"><div class="ico">02</div><h3>Dashboards</h3><p>Indicadores de vendas, produção, estoque, serviços e desempenho para acompanhamento em tempo real.</p></div>
+      <div class="service"><div class="ico">03</div><h3>Automação de Processos</h3><p>Redução de tarefas manuais, centralização de informações e criação de fluxos internos mais eficientes.</p></div>
+      <div class="service"><div class="ico">04</div><h3>Sistemas Multiempresa</h3><p>Arquiteturas preparadas para múltiplos clientes, unidades, licenças, usuários e níveis de acesso.</p></div>
+      <div class="service"><div class="ico">05</div><h3>Integrações</h3><p>Conexão com APIs, serviços externos, mensageria, documentos, relatórios e ferramentas de operação.</p></div>
+      <div class="service"><div class="ico">06</div><h3>Hospedagem e Evolução</h3><p>Ambientes em VPS, atualizações, manutenção, expansão de módulos e acompanhamento técnico.</p></div>
+    </div>
+
+    <div class="process">
+      <div class="step"><b>Etapa 1</b><h3>Diagnóstico</h3><p>Entendemos a operação, gargalos e regras.</p></div>
+      <div class="step"><b>Etapa 2</b><h3>Projeto</h3><p>Definimos telas, fluxos e estrutura do sistema.</p></div>
+      <div class="step"><b>Etapa 3</b><h3>Desenvolvimento</h3><p>Construímos, testamos e ajustamos a solução.</p></div>
+      <div class="step"><b>Etapa 4</b><h3>Evolução</h3><p>O sistema cresce junto com a necessidade.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="container">
+    <div class="cta">
+      <div><h2>Transforme seu processo em um sistema.</h2><p>Uma solução própria pode centralizar informações, reduzir retrabalho e dar mais visibilidade para sua operação.</p></div>
+      <div class="cta-actions"><a class="btn" href="#projetos">Ver projetos</a><a class="btn alt" href="#inicio">Voltar ao topo</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container foot"><span>I.A Tecnologia e Desenvolvimento de Software LTDA.</span><span>Inovação • Inteligência • Soluções</span></div></footer>
 </body>
 </html>
